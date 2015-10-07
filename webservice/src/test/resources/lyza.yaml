@@ -1,0 +1,27 @@
+cassandraHost: localhost
+cassandraPort: 9042
+sparkMasterUrl: local
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 4242
+  adminConnectors:
+    - type: http
+      port: 4243
+
+# Logging settings.
+logging:
+  level: INFO
+  loggers:
+    com.griddelta: DEBUG
+
+  appenders:
+    - type: console
+    - type: file
+      threshold: DEBUG
+      logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: /tmp/application.log
+      archivedLogFilenamePattern: /tmp/application-%d{yyyy-MM-dd}.log
+      archivedFileCount: 7
+      timeZone: UTC
